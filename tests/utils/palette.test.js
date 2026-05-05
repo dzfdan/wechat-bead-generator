@@ -46,3 +46,21 @@ test('returns white for a near-white pixel', () => {
 
   assert.equal(result.code, 'W01');
 });
+
+test('returns a deeper lip tone instead of flattening warm lip pixels into skin', () => {
+  const result = pickNearestBeadColor({ r: 210, g: 118, b: 128 });
+
+  assert.equal(result.code, 'R03');
+});
+
+test('returns a darker skin-shadow tone for jaw and nose-shadow pixels', () => {
+  const result = pickNearestBeadColor({ r: 184, g: 132, b: 118 });
+
+  assert.equal(result.code, 'S05');
+});
+
+test('returns a hair-shadow tone instead of collapsing blonde shadows into mid blonde', () => {
+  const result = pickNearestBeadColor({ r: 176, g: 148, b: 108 });
+
+  assert.equal(result.code, 'H04');
+});

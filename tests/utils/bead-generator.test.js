@@ -155,6 +155,32 @@ test('builds a centered board result model with blank outer margin cells', () =>
   ]);
 });
 
+test('keeps portrait hair-shadow detail in both preview and centered board grids', () => {
+  const pixels = [
+    { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 },
+    { r: 245, g: 245, b: 240 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 245, g: 245, b: 240 },
+    { r: 245, g: 245, b: 240 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 176, g: 148, b: 108 }, { r: 34, g: 34, b: 34 }, { r: 245, g: 245, b: 240 },
+    { r: 245, g: 245, b: 240 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 176, g: 148, b: 108 }, { r: 224, g: 204, b: 160 }, { r: 245, g: 245, b: 240 },
+    { r: 245, g: 245, b: 240 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 224, g: 204, b: 160 }, { r: 245, g: 245, b: 240 },
+    { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }, { r: 245, g: 245, b: 240 }
+  ];
+
+  const grid = buildBeadGrid({
+    pixels,
+    width: 6,
+    height: 6
+  });
+  const result = buildResultModel({
+    grid,
+    size: 8
+  });
+
+  assert.equal(result.previewGridRows[2][3].code, 'H04');
+  assert.equal(result.previewGridRows[3][3].code, 'H04');
+  assert.equal(result.gridRows[3][4].code, 'H04');
+  assert.equal(result.gridRows[4][4].code, 'H04');
+});
+
 test('does not count blank board cells in usage statistics', () => {
   const usage = summarizeUsage([
     [{ code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', isBlank: true }, { code: 'R01', name: 'Cherry Red', hex: '#e23d48' }],

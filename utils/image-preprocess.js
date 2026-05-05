@@ -50,8 +50,10 @@ function averageNeighborChannel(data, width, height, x, y, channel) {
         continue;
       }
 
-      total += data[((currentY * width) + currentX) * 4 + channel];
-      count += 1;
+      const weight = currentX === x && currentY === y ? 4 : 1;
+
+      total += data[((currentY * width) + currentX) * 4 + channel] * weight;
+      count += weight;
     }
   }
 

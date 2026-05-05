@@ -56,3 +56,37 @@ test('lightly smooths and rebalances channels without changing geometry or alpha
   assert.equal(result.data[5] > 30, true);
   assert.equal(result.data[6] > 30, true);
 });
+
+test('keeps facial contrast between skin and lip tones after enhancement', () => {
+  const imageData = {
+    width: 2,
+    height: 1,
+    data: new Uint8ClampedArray([
+      236, 198, 186, 255,
+      202, 118, 128, 255
+    ])
+  };
+
+  const result = enhanceImageData(imageData);
+  const skinLuma = (result.data[0] * 0.299) + (result.data[1] * 0.587) + (result.data[2] * 0.114);
+  const lipLuma = (result.data[4] * 0.299) + (result.data[5] * 0.587) + (result.data[6] * 0.114);
+
+  assert.equal(skinLuma - lipLuma >= 28, true);
+});
+
+test('keeps blonde highlight and hair shadow separation after enhancement', () => {
+  const imageData = {
+    width: 2,
+    height: 1,
+    data: new Uint8ClampedArray([
+      223, 204, 164, 255,
+      173, 146, 108, 255
+    ])
+  };
+
+  const result = enhanceImageData(imageData);
+  const highlightLuma = (result.data[0] * 0.299) + (result.data[1] * 0.587) + (result.data[2] * 0.114);
+  const shadowLuma = (result.data[4] * 0.299) + (result.data[5] * 0.587) + (result.data[6] * 0.114);
+
+  assert.equal(highlightLuma - shadowLuma >= 35, true);
+});

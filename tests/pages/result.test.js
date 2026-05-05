@@ -255,6 +255,110 @@ test('result page renders preview from the compact grid and guide/export from th
   }
 });
 
+test('result page keeps portrait detail in preview while guide keeps centered board blanks', () => {
+  const originalPage = global.Page;
+  const originalWx = global.wx;
+  const originalGetApp = global.getApp;
+  const registrations = [];
+  const previewGridRows = [
+    [
+      { code: 'H01', name: 'Light Blonde', hex: '#e0cca0', label: '1-1' },
+      { code: 'H04', name: 'Hair Shadow', hex: '#b0936c', label: '1-2' }
+    ]
+  ];
+  const boardGridRows = [
+    [
+      { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '1-1', isBlank: true },
+      { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '1-2', isBlank: true }
+    ],
+    [
+      { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '2-1', isBlank: true },
+      { code: 'H04', name: 'Hair Shadow', hex: '#b0936c', label: '2-2' }
+    ]
+  ];
+  const renderInputs = [];
+
+  global.Page = (definition) => {
+    registrations.push(definition);
+  };
+  global.getApp = () => ({
+    globalData: {
+      currentResult: {
+        ...payload,
+        size: 2,
+        previewGridRows,
+        gridRows: boardGridRows
+      }
+    }
+  });
+  global.wx = {
+    createSelectorQuery() {
+      return {
+        select() {
+          return this;
+        },
+        fields() {
+          return this;
+        },
+        exec(callback) {
+          callback([{
+            node: {
+              getContext() {
+                return { marker: 'ctx' };
+              }
+            },
+            width: 0,
+            height: 0
+          }]);
+        }
+      };
+    },
+    showToast() {}
+  };
+
+  try {
+    delete require.cache[require.resolve(resultPageJs)];
+    require(resultPageJs);
+
+    const page = registrations[0];
+    const instance = {
+      data: {
+        ...page.data,
+        result: {
+          ...payload,
+          size: 2,
+          previewGridRows,
+          gridRows: boardGridRows
+        }
+      },
+      setData(update) {
+        Object.assign(this.data, update);
+      }
+    };
+    const previewRenderer = (ctx, gridRows) => {
+      renderInputs.push({ type: 'preview', ctx, gridRows });
+    };
+    const guideRenderer = (ctx, gridRows) => {
+      renderInputs.push({ type: 'guide', ctx, gridRows });
+    };
+
+    page.renderCanvas.call(instance, '#previewCanvas', 10, previewRenderer);
+    page.renderCanvas.call(instance, '#guideCanvas', 10, guideRenderer);
+
+    assert.deepEqual(renderInputs, [
+      { type: 'preview', ctx: { marker: 'ctx' }, gridRows: previewGridRows },
+      { type: 'guide', ctx: { marker: 'ctx' }, gridRows: boardGridRows }
+    ]);
+    assert.equal(renderInputs[0].gridRows[0][1].code, 'H04');
+    assert.equal(renderInputs[1].gridRows[0][0].isBlank, true);
+  } finally {
+    global.Page = originalPage;
+    global.wx = originalWx;
+    global.getApp = originalGetApp;
+    delete require.cache[require.resolve(resultPageJs)];
+  }
+});
+
 test('result page template includes preview, guide and export canvases only', () => {
   const template = fs.readFileSync(resultPageWxml, 'utf8');
   const styles = fs.readFileSync(resultPageWxss, 'utf8');

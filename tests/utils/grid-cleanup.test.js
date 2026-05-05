@@ -180,6 +180,25 @@ test('preserves a compact centered facial shadow cluster when it is surrounded b
   assert.equal(result[5][4].code, 'S04');
 });
 
+test('preserves a compact centered hair-shadow pair when it separates hair highlight from deeper outline detail', () => {
+  const grid = [
+    [cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H04', '#b0936c'), cell('K01', '#222222'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H04', '#b0936c'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('H01', '#e0cca0'), cell('W01', '#f5f5f0')],
+    [cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0')]
+  ];
+
+  const result = cleanupGrid(grid);
+
+  assert.equal(result[4][4].code, 'H04');
+  assert.equal(result[5][4].code, 'H04');
+});
+
 test('still removes unrelated centered two-cell noise even when a darker subject detail is nearby', () => {
   const grid = [
     [cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0'), cell('W01', '#f5f5f0')],

@@ -247,10 +247,11 @@ function shouldPreserveCompactSubjectCluster(grid, component, dominantBorder) {
 
   const { current, isNearCenter, isBackgroundBorder, contrast } = getComponentPreservationContext(grid, component, dominantBorder);
   const hasSkinLikeCode = /^S\d+$/i.test(current.code);
+  const hasHairLikeCode = /^H\d+$/i.test(current.code);
 
   return isNearCenter
     && !isBackgroundBorder
-    && hasSkinLikeCode
+    && (hasSkinLikeCode || hasHairLikeCode)
     && contrast !== null
     && contrast >= 45
     && hasAnchoringSubjectDetail(grid, component, dominantBorder);
