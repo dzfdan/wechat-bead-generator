@@ -1,0 +1,76 @@
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+  background: #f5f7fb;
+  box-sizing: border-box;
+}
+
+.card {
+  margin-bottom: 24rpx;
+  padding: 24rpx;
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 12rpx 32rpx rgba(15, 23, 42, 0.08);
+}
+
+.title {
+  margin-bottom: 16rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111827;
+}
+
+.preview-canvas {
+  width: 640rpx;
+  height: 640rpx;
+  display: block;
+  border-radius: 16rpx;
+  background: #ffffff;
+}
+
+.hidden-canvas {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+.usage-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 12rpx 0;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.usage-row:last-child {
+  border-bottom: none;
+}
+
+.swatch {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 999rpx;
+  border: 1px solid #d0d7de;
+  flex-shrink: 0;
+}
+
+.usage-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1f2937;
+}
+
+.usage-count {
+  font-size: 28rpx;
+  color: #4b5563;
+}
+
+.primary-button {
+  width: 100%;
+  border-radius: 999rpx;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 30rpx;
+}

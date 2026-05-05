@@ -1,0 +1,26 @@
+<view class="page" wx:if="{{result}}">
+  <view class="card">
+    <view class="title">拼豆效果图</view>
+    <canvas id="previewCanvas" type="2d" class="preview-canvas"></canvas>
+  </view>
+
+  <view class="card">
+    <view class="title">网格色号图</view>
+    <canvas id="guideCanvas" type="2d" class="preview-canvas"></canvas>
+  </view>
+
+  <view class="card">
+    <view class="title">颜色用量统计</view>
+    <view class="usage-row" wx:for="{{result.usage}}" wx:key="code">
+      <view class="swatch" style="background: {{item.hex}};"></view>
+      <view class="usage-text">{{item.code}} {{item.name}}</view>
+      <view class="usage-count">{{item.count}} 颗</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <button class="primary-button" bindtap="saveImage">保存高清拼豆图</button>
+  </view>
+
+  <canvas id="exportCanvas" type="2d" class="hidden-canvas"></canvas>
+</view>
