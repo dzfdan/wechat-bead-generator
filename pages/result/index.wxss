@@ -1,31 +1,122 @@
 .page {
   min-height: 100vh;
-  padding: 24rpx;
-  background: #f5f7fb;
+  padding: 28rpx 24rpx 40rpx;
   box-sizing: border-box;
+  background:
+    radial-gradient(circle at right 8% top 8%, #ffd44e 0, #ffd44e 120rpx, transparent 121rpx),
+    radial-gradient(circle at left 12% top 26%, #7ad7ff 0, #7ad7ff 82rpx, transparent 83rpx),
+    linear-gradient(180deg, #fff7eb 0%, #ffeed9 100%);
 }
 
-.card {
+.result-hero,
+.display-card,
+.usage-card,
+.save-panel {
   margin-bottom: 24rpx;
-  padding: 24rpx;
-  border-radius: 24rpx;
-  background: #ffffff;
-  box-shadow: 0 12rpx 32rpx rgba(15, 23, 42, 0.08);
+  border: 4rpx solid #1f1730;
+  border-radius: 36rpx;
+  box-shadow: 0 14rpx 0 #1f1730;
 }
 
-.title {
-  margin-bottom: 16rpx;
-  font-size: 32rpx;
-  font-weight: 600;
-  color: #111827;
+.result-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 34rpx 32rpx 40rpx;
+  background: linear-gradient(135deg, #6bd6ff 0%, #8dbeff 60%, #ffd44e 100%);
+}
+
+.result-hero::after {
+  content: '';
+  position: absolute;
+  right: -20rpx;
+  top: 36rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50rpx;
+  background: rgba(255, 248, 240, 0.28);
+  transform: rotate(14deg);
+}
+
+.hero-badge,
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48rpx;
+  padding: 0 22rpx;
+  border: 3rpx solid #1f1730;
+  border-radius: 999rpx;
+  background: #fff8f0;
+  font-size: 20rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+  color: #1f1730;
+  box-shadow: 0 8rpx 0 rgba(31, 23, 48, 0.16);
+}
+
+.hero-title {
+  position: relative;
+  z-index: 1;
+  margin-top: 20rpx;
+  font-size: 54rpx;
+  line-height: 1.08;
+  font-weight: 800;
+  color: #1f1730;
+}
+
+.hero-subtitle {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: rgba(31, 23, 48, 0.82);
+}
+
+.display-card,
+.usage-card,
+.save-panel {
+  padding: 28rpx;
+  background: rgba(255, 251, 245, 0.96);
+}
+
+.display-card--preview {
+  background:
+    linear-gradient(180deg, rgba(255, 123, 89, 0.12), rgba(255, 251, 245, 0.96) 36%),
+    rgba(255, 251, 245, 0.96);
+}
+
+.display-card--guide {
+  background:
+    linear-gradient(180deg, rgba(107, 214, 255, 0.14), rgba(255, 251, 245, 0.96) 36%),
+    rgba(255, 251, 245, 0.96);
+}
+
+.section-title {
+  margin-top: 16rpx;
+  font-size: 38rpx;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #1f1730;
+}
+
+.section-note {
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+  color: rgba(31, 23, 48, 0.72);
 }
 
 .preview-canvas {
   width: 640rpx;
   height: 640rpx;
   display: block;
-  border-radius: 16rpx;
-  background: #ffffff;
+  border: 4rpx solid #1f1730;
+  border-radius: 28rpx;
+  background: #fffdf8;
+  box-shadow: inset 0 0 0 10rpx rgba(255, 212, 78, 0.16);
 }
 
 .hidden-canvas {
@@ -40,37 +131,50 @@
   display: flex;
   align-items: center;
   gap: 16rpx;
-  padding: 12rpx 0;
-  border-bottom: 1px solid #eef2f7;
-}
-
-.usage-row:last-child {
-  border-bottom: none;
+  margin-top: 18rpx;
+  padding: 20rpx 18rpx;
+  border: 3rpx solid rgba(31, 23, 48, 0.12);
+  border-radius: 24rpx;
+  background: #fff8f0;
 }
 
 .swatch {
-  width: 32rpx;
-  height: 32rpx;
+  width: 40rpx;
+  height: 40rpx;
   border-radius: 999rpx;
-  border: 1px solid #d0d7de;
+  border: 2rpx solid #1f1730;
+  box-shadow: 0 6rpx 0 rgba(31, 23, 48, 0.12);
   flex-shrink: 0;
 }
 
 .usage-text {
   flex: 1;
   font-size: 28rpx;
-  color: #1f2937;
+  font-weight: 700;
+  color: #1f1730;
 }
 
 .usage-count {
-  font-size: 28rpx;
-  color: #4b5563;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #1f1730;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #fff8f0;
+}
+
+.save-panel {
+  background: linear-gradient(135deg, #ff7a59 0%, #ff9658 100%);
 }
 
 .primary-button {
   width: 100%;
+  min-height: 92rpx;
+  border: 3rpx solid #1f1730;
   border-radius: 999rpx;
-  background: #2563eb;
-  color: #ffffff;
+  background: #1f1730;
+  color: #fff8f0;
   font-size: 30rpx;
+  font-weight: 800;
+  box-shadow: 0 12rpx 0 rgba(31, 23, 48, 0.16);
 }

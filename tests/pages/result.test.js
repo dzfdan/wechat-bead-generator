@@ -363,6 +363,11 @@ test('result page template includes preview, guide and export canvases only', ()
   const template = fs.readFileSync(resultPageWxml, 'utf8');
   const styles = fs.readFileSync(resultPageWxss, 'utf8');
 
+  assert.match(template, /class="result-hero"/);
+  assert.match(template, /class="display-card display-card--preview"/);
+  assert.match(template, /class="display-card display-card--guide"/);
+  assert.match(template, /class="usage-card"/);
+  assert.match(template, /class="save-panel"/);
   assert.match(template, /id="previewCanvas"/);
   assert.doesNotMatch(template, /id="pegboardCanvas"/);
   assert.match(template, /id="guideCanvas"/);

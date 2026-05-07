@@ -1,17 +1,28 @@
 <view class="page">
-  <view class="card">
-    <view class="title">上传本地图片</view>
-    <button class="primary-button" bindtap="chooseImage">选择图片</button>
-    <image
-      wx:if="{{imagePath}}"
-      class="preview"
-      src="{{imagePath}}"
-      mode="aspectFit"
-    />
+  <view class="hero">
+    <view class="hero-badge">DIY TOY KIT</view>
+    <view class="hero-title">把照片变成拼豆收藏卡</view>
+    <view class="hero-subtitle">上传图片，选择尺寸，生成效果预览和参考图。</view>
   </view>
 
-  <view class="card">
-    <view class="title">选择拼豆尺寸</view>
+  <view class="upload-stage">
+    <view class="section-kicker">IMAGE</view>
+    <view class="section-title">上传本地图片</view>
+    <button class="primary-button" bindtap="chooseImage">选择图片</button>
+    <view class="preview-frame">
+      <image
+        wx:if="{{imagePath}}"
+        class="preview"
+        src="{{imagePath}}"
+        mode="aspectFit"
+      />
+      <view wx:else class="preview-empty">等待放入主视觉</view>
+    </view>
+  </view>
+
+  <view class="size-panel">
+    <view class="section-kicker">SIZE</view>
+    <view class="section-title">选择拼豆尺寸</view>
     <view class="size-list">
       <view
         wx:for="{{sizeOptions}}"
@@ -25,8 +36,9 @@
     </view>
   </view>
 
-  <view class="card">
-    <button class="primary-button" loading="{{generating}}" bindtap="generateResult">
+  <view class="generate-panel">
+    <view class="generate-copy">准备好后开始生成你的拼豆套装</view>
+    <button class="primary-button primary-button--generate" loading="{{generating}}" bindtap="generateResult">
       开始生成
     </button>
   </view>

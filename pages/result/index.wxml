@@ -1,16 +1,27 @@
 <view class="page" wx:if="{{result}}">
-  <view class="card">
-    <view class="title">拼豆效果图</view>
+  <view class="result-hero">
+    <view class="hero-badge">KIT READY</view>
+    <view class="hero-title">你的拼豆套装已生成</view>
+    <view class="hero-subtitle">先看效果，再照参考图开始制作。</view>
+  </view>
+
+  <view class="display-card display-card--preview">
+    <view class="section-kicker">PREVIEW</view>
+    <view class="section-title">拼豆效果图</view>
+    <view class="section-note">用于快速查看整体成品气质</view>
     <canvas id="previewCanvas" type="2d" class="preview-canvas"></canvas>
   </view>
 
-  <view class="card">
-    <view class="title">网格色号图</view>
+  <view class="display-card display-card--guide">
+    <view class="section-kicker">GUIDE</view>
+    <view class="section-title">网格色号图</view>
+    <view class="section-note">用于照图摆放和核对色号</view>
     <canvas id="guideCanvas" type="2d" class="preview-canvas"></canvas>
   </view>
 
-  <view class="card">
-    <view class="title">颜色用量统计</view>
+  <view class="usage-card">
+    <view class="section-kicker">PARTS</view>
+    <view class="section-title">颜色用量统计</view>
     <view class="usage-row" wx:for="{{result.usage}}" wx:key="code">
       <view class="swatch" style="background: {{item.hex}};"></view>
       <view class="usage-text">{{item.code}} {{item.name}}</view>
@@ -18,7 +29,7 @@
     </view>
   </view>
 
-  <view class="card">
+  <view class="save-panel">
     <button class="primary-button" bindtap="saveImage">保存高清拼豆图</button>
   </view>
 

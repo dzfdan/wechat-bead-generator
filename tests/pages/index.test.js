@@ -21,6 +21,11 @@ function createPageInstance(page) {
 test('index page includes a hidden canvas for image sampling', () => {
   const wxml = fs.readFileSync(indexPageWxml, 'utf8');
 
+  assert.match(wxml, /class="hero"/);
+  assert.match(wxml, /class="hero-badge"/);
+  assert.match(wxml, /class="upload-stage"/);
+  assert.match(wxml, /class="size-panel"/);
+  assert.match(wxml, /class="generate-panel"/);
   assert.match(wxml, /<canvas[^>]*id="sourceCanvas"/);
 });
 
