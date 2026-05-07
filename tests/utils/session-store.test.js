@@ -5,7 +5,7 @@ const { createSessionStore } = require('../../utils/session-store');
 
 test('stores and retrieves the latest generation result in memory', () => {
   const store = createSessionStore();
-  const payload = { size: 48, usage: [{ code: 'R01', count: 3 }] };
+  const payload = { size: 48, usage: [{ code: 'F4', name: '正红', hex: '#FC283C', count: 3 }] };
 
   store.set(payload);
 

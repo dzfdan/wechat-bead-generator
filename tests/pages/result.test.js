@@ -10,9 +10,9 @@ const resultPageWxss = path.join(__dirname, '../../pages/result/index.wxss');
 const payload = {
   sourceImagePath: 'images/source.png',
   size: 48,
-   previewGridRows: [[{ code: 'R01', name: 'Cherry Red', hex: '#e23d48', label: '1-1' }]],
-  gridRows: [[{ code: 'R01', name: 'Cherry Red', hex: '#e23d48', label: '1-1' }]],
-  usage: [{ code: 'R01', name: 'Cherry Red', hex: '#e23d48', count: 1 }]
+  previewGridRows: [[{ code: 'F4', name: '正红', hex: '#FC283C', label: '1-1' }]],
+  gridRows: [[{ code: 'F4', name: '正红', hex: '#FC283C', label: '1-1' }]],
+  usage: [{ code: 'F4', name: '正红', hex: '#FC283C', count: 1 }]
 };
 
 test('result page exists and loads the latest generation result', () => {
@@ -152,7 +152,7 @@ test('result page renders preview from the compact grid and guide/export from th
   const originalWx = global.wx;
   const originalGetApp = global.getApp;
   const registrations = [];
-  const previewGridRows = [[{ code: 'R01', name: 'Cherry Red', hex: '#e23d48', label: '1-1' }]];
+  const previewGridRows = [[{ code: 'F4', name: '正红', hex: '#FC283C', label: '1-1' }]];
   const boardGridRows = [
     [
       { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '1-1', isBlank: true },
@@ -160,7 +160,7 @@ test('result page renders preview from the compact grid and guide/export from th
     ],
     [
       { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '2-1', isBlank: true },
-      { code: 'R01', name: 'Cherry Red', hex: '#e23d48', label: '2-2' }
+      { code: 'F4', name: '正红', hex: '#FC283C', label: '2-2' }
     ]
   ];
   const renderInputs = [];
@@ -262,8 +262,8 @@ test('result page keeps portrait detail in preview while guide keeps centered bo
   const registrations = [];
   const previewGridRows = [
     [
-      { code: 'H01', name: 'Light Blonde', hex: '#e0cca0', label: '1-1' },
-      { code: 'H04', name: 'Hair Shadow', hex: '#b0936c', label: '1-2' }
+      { code: 'H2', name: '米白', hex: '#F5F1E6', label: '1-1' },
+      { code: 'G4', name: '浅棕', hex: '#B08F68', label: '1-2' }
     ]
   ];
   const boardGridRows = [
@@ -273,7 +273,7 @@ test('result page keeps portrait detail in preview while guide keeps centered bo
     ],
     [
       { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '2-1', isBlank: true },
-      { code: 'H04', name: 'Hair Shadow', hex: '#b0936c', label: '2-2' }
+      { code: 'G4', name: '浅棕', hex: '#B08F68', label: '2-2' }
     ]
   ];
   const renderInputs = [];
@@ -349,7 +349,7 @@ test('result page keeps portrait detail in preview while guide keeps centered bo
       { type: 'preview', ctx: { marker: 'ctx' }, gridRows: previewGridRows },
       { type: 'guide', ctx: { marker: 'ctx' }, gridRows: boardGridRows }
     ]);
-    assert.equal(renderInputs[0].gridRows[0][1].code, 'H04');
+    assert.equal(renderInputs[0].gridRows[0][1].code, 'G4');
     assert.equal(renderInputs[1].gridRows[0][0].isBlank, true);
   } finally {
     global.Page = originalPage;

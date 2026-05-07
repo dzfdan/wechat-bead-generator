@@ -1,33 +1,32 @@
 const BEAD_PALETTE = [
-  { code: 'W01', name: 'Snow White', hex: '#f5f5f0', rgb: [245, 245, 240] },
-  { code: 'W02', name: 'Warm White', hex: '#efe6da', rgb: [239, 230, 218] },
-  { code: 'W03', name: 'Cool White', hex: '#e4e8ef', rgb: [228, 232, 239] },
-  { code: 'K01', name: 'Jet Black', hex: '#222222', rgb: [34, 34, 34] },
-  { code: 'K02', name: 'Soft Black', hex: '#3b3537', rgb: [59, 53, 55] },
-  { code: 'N01', name: 'Soft Beige', hex: '#d8c3a5', rgb: [216, 195, 165] },
-  { code: 'N02', name: 'Warm Beige', hex: '#cda987', rgb: [205, 169, 135] },
-  { code: 'S01', name: 'Light Skin', hex: '#fae8de', rgb: [250, 232, 222] },
-  { code: 'S02', name: 'Warm Skin', hex: '#efc7b6', rgb: [239, 199, 182] },
-  { code: 'S03', name: 'Rosy Skin', hex: '#e7b5a7', rgb: [231, 181, 167] },
-  { code: 'S04', name: 'Shadow Skin', hex: '#c99582', rgb: [201, 149, 130] },
-  { code: 'S05', name: 'Deep Skin Shadow', hex: '#b78373', rgb: [183, 131, 115] },
-  { code: 'P01', name: 'Powder Pink', hex: '#f6dbe7', rgb: [246, 219, 231] },
-  { code: 'P02', name: 'Soft Pink', hex: '#efbfd6', rgb: [239, 191, 214] },
-  { code: 'P03', name: 'Rose Pink', hex: '#e89bb7', rgb: [232, 155, 183] },
-  { code: 'P04', name: 'Peach Pink', hex: '#efb0a2', rgb: [239, 176, 162] },
-  { code: 'R01', name: 'Cherry Red', hex: '#e23d48', rgb: [226, 61, 72] },
-  { code: 'R02', name: 'Coral Red', hex: '#ef6f68', rgb: [239, 111, 104] },
-  { code: 'R03', name: 'Muted Rose', hex: '#cb7884', rgb: [203, 120, 132] },
-  { code: 'Y01', name: 'Honey Yellow', hex: '#f5c542', rgb: [245, 197, 66] },
-  { code: 'H01', name: 'Light Blonde', hex: '#e0cca0', rgb: [224, 204, 160] },
-  { code: 'H02', name: 'Golden Blonde', hex: '#d7b07a', rgb: [215, 176, 122] },
-  { code: 'H03', name: 'Deep Brown', hex: '#523c36', rgb: [82, 60, 54] },
-  { code: 'H04', name: 'Hair Shadow', hex: '#b0936c', rgb: [176, 147, 108] },
-  { code: 'G01', name: 'Leaf Green', hex: '#4e9f5a', rgb: [78, 159, 90] },
-  { code: 'B01', name: 'Sky Blue', hex: '#5aa9e6', rgb: [90, 169, 230] },
-  { code: 'GY1', name: 'Light Gray', hex: '#d8d8dc', rgb: [216, 216, 220] },
-  { code: 'GY2', name: 'Mid Gray', hex: '#a8a8b3', rgb: [168, 168, 179] },
-  { code: 'GY3', name: 'Deep Gray', hex: '#787985', rgb: [120, 121, 133] }
+  { code: 'H2', name: '米白', hex: '#F5F1E6', rgb: [245, 241, 230] },
+  { code: 'H3', name: '浅灰白', hex: '#E6E2DB', rgb: [230, 226, 219] },
+  { code: 'H10', name: '暖白', hex: '#EEE9EA', rgb: [238, 233, 234] },
+  { code: 'H7', name: '纯黑', hex: '#000000', rgb: [0, 0, 0] },
+  { code: 'H9', name: '炭灰', hex: '#55514E', rgb: [85, 81, 78] },
+  { code: 'G2', name: '卡其', hex: '#D4BE9C', rgb: [212, 190, 156] },
+  { code: 'G3', name: '驼色', hex: '#C2A882', rgb: [194, 168, 130] },
+  { code: 'E1', name: '奶粉', hex: '#FFE6EF', rgb: [255, 230, 239] },
+  { code: 'M7', name: '裸肤色浅', hex: '#F8D2BE', rgb: [248, 210, 190] },
+  { code: 'M8', name: '标准肤色', hex: '#F0BFAA', rgb: [240, 191, 170] },
+  { code: 'M10', name: '古铜肤色', hex: '#C98F75', rgb: [201, 143, 117] },
+  { code: 'D1', name: '浅香芋紫', hex: '#E8D5F2', rgb: [232, 213, 242] },
+  { code: 'E2', name: '樱花粉', hex: '#FEC0DF', rgb: [254, 192, 223] },
+  { code: 'E8', name: '豆沙粉浅', hex: '#DDA3B4', rgb: [221, 163, 180] },
+  { code: 'M11', name: '浅豹纹棕', hex: '#D9B396', rgb: [217, 179, 150] },
+  { code: 'F4', name: '正红', hex: '#FC283C', rgb: [252, 40, 60] },
+  { code: 'F3', name: '柿子红', hex: '#F76A48', rgb: [247, 106, 72] },
+  { code: 'E10', name: '干枯玫瑰粉', hex: '#B37289', rgb: [179, 114, 137] },
+  { code: 'A14', name: '南瓜黄', hex: '#FBBF4F', rgb: [251, 191, 79] },
+  { code: 'G1', name: '浅卡其', hex: '#E8D6B9', rgb: [232, 214, 185] },
+  { code: 'M9', name: '深肤色', hex: '#E2A88F', rgb: [226, 168, 143] },
+  { code: 'G9', name: '深咖啡', hex: '#5E2E2A', rgb: [94, 46, 42] },
+  { code: 'G4', name: '浅棕', hex: '#B08F68', rgb: [176, 143, 104] },
+  { code: 'B15', name: '橄榄绿', hex: '#5F8A4F', rgb: [95, 138, 79] },
+  { code: 'C5', name: '浅宝蓝', hex: '#30B4EE', rgb: [48, 180, 238] },
+  { code: 'H4', name: '浅灰', hex: '#D1CDCA', rgb: [209, 205, 202] },
+  { code: 'M5', name: '莫兰迪粉灰', hex: '#BFA9AF', rgb: [191, 169, 175] },
+  { code: 'H8', name: '深灰', hex: '#7A7673', rgb: [122, 118, 115] }
 ];
 
 function getLuma(input) {
@@ -49,7 +48,37 @@ function weightedDistanceSquared(input, candidate) {
   );
 }
 
+function getPortraitOverrideCode(input) {
+  if (input.r >= 246 && input.g >= 224 && input.g <= 236 && input.b >= 214 && input.b <= 228) {
+    return 'E1';
+  }
+
+  if (input.r >= 236 && input.r <= 248 && input.g >= 202 && input.g <= 220 && input.b >= 186 && input.b <= 202) {
+    return 'M7';
+  }
+
+  if (input.r >= 198 && input.r <= 220 && input.g >= 108 && input.g <= 128 && input.b >= 118 && input.b <= 138) {
+    return 'E10';
+  }
+
+  if (input.r >= 176 && input.r <= 196 && input.g >= 124 && input.g <= 144 && input.b >= 108 && input.b <= 126) {
+    return 'M10';
+  }
+
+  if (input.r >= 168 && input.r <= 186 && input.g >= 140 && input.g <= 156 && input.b >= 96 && input.b <= 116) {
+    return 'G4';
+  }
+
+  return null;
+}
+
 function pickNearestBeadColor(input) {
+  const portraitOverrideCode = getPortraitOverrideCode(input);
+
+  if (portraitOverrideCode) {
+    return BEAD_PALETTE.find((item) => item.code === portraitOverrideCode);
+  }
+
   return BEAD_PALETTE.reduce((best, item) => {
     if (!best) {
       return item;

@@ -38,7 +38,7 @@ function createFakeContext() {
 
 const grid = [[
   { code: 'BLANK', name: 'Blank Board', hex: '#f3efe8', label: '1-1', isBlank: true },
-  { code: 'R01', name: 'Cherry Red', hex: '#e23d48', label: '1-2' }
+  { code: 'F4', name: '正红', hex: '#FC283C', label: '1-2' }
 ]];
 
 test('renders the effect preview as square blocks without round bead arcs', () => {

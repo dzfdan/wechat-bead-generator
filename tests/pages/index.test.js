@@ -83,10 +83,10 @@ test('generateResult samples pixels from the selected image before building the 
     assert.equal(sampleArgs.size, 3);
     assert.equal(app.globalData.currentResult.size, 3);
     assert.equal(app.globalData.currentResult.gridRows[0][0].isBlank, true);
-    assert.equal(app.globalData.currentResult.gridRows[1][1].code, 'K01');
+    assert.equal(app.globalData.currentResult.gridRows[1][1].code, 'H7');
     assert.equal(app.globalData.currentResult.gridRows[1][1].label, '2-2');
-    assert.equal(app.globalData.currentResult.gridRows[2][2].code, 'K01');
-    assert.equal(app.globalData.currentResult.usage[0].code, 'K01');
+    assert.equal(app.globalData.currentResult.gridRows[2][2].code, 'H7');
+    assert.equal(app.globalData.currentResult.usage[0].code, 'H7');
     assert.equal(app.globalData.currentResult.usage[0].count, 4);
     assert.equal(navigatedUrl, '/pages/result/index');
   } finally {
